@@ -197,7 +197,7 @@
                         {
                             "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nic2Name'))]",
                             "properties": {
-                                "primary": fa
+                                "primary": true
                             }
                         }
                     ]
