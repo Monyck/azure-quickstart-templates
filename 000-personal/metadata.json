@@ -1,0 +1,7 @@
+{
+  "itemDisplayName": "Deploy a specialized VM with multiple NICs",
+  "description": "This template creates a specialized VM with multiple NICs",
+  "summary": "This template creates a specialized VM with multiple NICs",
+  "githubUsername": "Monyck",
+  "dateUpdated": "2016-09-29"
+}
