@@ -92,7 +92,6 @@
         "subnet2Ref": "[concat(variables('vnetID'),'/subnets/', parameters('subnet2Name'))]",
         "nic2Name": "[concat(parameters('vmName'),'-Nic2')]",
         "publicIPAddressName": "[concat(parameters('vmName'),'-PublicIP')]",
-        "nic3Name": "[concat(parameters('vmName'),'-Nic3')]"
     },
     "resources": [
         {
@@ -160,28 +159,6 @@
                 "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]"
             ]
         },
-                {
-            "type": "Microsoft.Network/networkInterfaces",
-            "name": "[variables('nic3Name')]",
-            "apiVersion": "[variables('api-version')]",
-            "location": "[resourceGroup().location]",
-            "tags": {
-                "displayName": "NetworkInterface3"
-            },
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ipconfig1",
-                        "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
-                            "subnet": {
-                                "id": "[variables('subnet2Ref')]"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
         {
             "type": "Microsoft.Compute/virtualMachines",
             "name": "[parameters('vmName')]",
@@ -218,12 +195,6 @@
                             "properties": {
                                 "primary": false
                             }
-                        },
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nic3Name'))]",
-                            "properties": {
-                                "primary": false
-                            }
                         }
                     ]
                 }
@@ -231,8 +202,7 @@
             "dependsOn": [
                 "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
                 "[concat('Microsoft.Network/networkInterfaces/', variables('nic1Name'))]",
-                "[concat('Microsoft.Network/networkInterfaces/', variables('nic2Name'))]",
-                "[concat('Microsoft.Network/networkInterfaces/', variables('nic3Name'))]"
+                "[concat('Microsoft.Network/networkInterfaces/', variables('nic2Name'))]"
             ]
         }
     ]
