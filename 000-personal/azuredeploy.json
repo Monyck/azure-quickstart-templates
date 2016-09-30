@@ -68,13 +68,13 @@
         "subnet1Name": {
             "type": "String",
             "metadata": {
-                "description": "Name of the first subnet in the virtual network you want to use"
+                "description": "Name of the public subnet"
             }
         },
         "subnet2Name": {
             "type": "String",
             "metadata": {
-                "description": "Name of the second subnet in the virtual network you want to use"
+                "description": "Name of the management subnet"
             }
         },
         "dnsNameForPublicIP": {
@@ -88,9 +88,9 @@
         "api-version": "2015-06-15",
         "vnetID": "[resourceId(parameters('existingVirtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('existingVirtualNetworkName'))]",
         "subnet1Ref": "[concat(variables('vnetID'),'/subnets/', parameters('subnet1Name'))]",
-        "nic1Name": "[concat(parameters('vmName'),'-Nic1')]",
+        "nic1Name": "[concat(parameters('vmName'),'-PublicNIC')]",
         "subnet2Ref": "[concat(variables('vnetID'),'/subnets/', parameters('subnet2Name'))]",
-        "nic2Name": "[concat(parameters('vmName'),'-Nic2')]",
+        "nic2Name": "[concat(parameters('vmName'),'-MngmNIC')]",
         "publicIPAddressName": "[concat(parameters('vmName'),'-PublicIP')]",
     },
     "resources": [
