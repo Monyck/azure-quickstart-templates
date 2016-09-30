@@ -195,7 +195,7 @@
                 "storageProfile": {
                     "osDisk": {
                         "name": "[concat(parameters('vmName'),'-osDisk')]",
-                        "osType": "[parameters('osType')]",
+                        "osType": "[variables('osType')]",
                         "caching": "ReadWrite",
                         "vhd": {
                             "uri": "[parameters('osDiskVhdUri')]"
